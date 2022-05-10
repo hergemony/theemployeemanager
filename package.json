@@ -1,0 +1,20 @@
+{
+  "name": "theemployeemanager",
+  "version": "1.0.0",
+  "description": "# Description This project emphasizes the use of using MySql with Inquirer, Node Js, console.table and several npm and json packages to render an application to track employee details.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hergemony/theemployeemanager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hergemony/theemployeemanager/issues"
+  },
+  "homepage": "https://github.com/hergemony/theemployeemanager#readme"
+}
