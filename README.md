@@ -33,7 +33,7 @@ View departments, roles, employees
 Update employee roles
 
 ## Installation
-Git clone the repository into your terminal. The application should use Jest for running the unit tests and Inquirer from npm for collecting input from the user. The following command line when invoked will run the application: node index.js
+Git clone the repository into your terminal. The application should use mysql2 for running the unit tests and Inquirer from npm for collecting input from the user. The following command line when invoked will run the application: node server.js
 To Execute File:
 Open in browser
 
