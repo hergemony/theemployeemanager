@@ -1,8 +1,8 @@
 // Create main server.js page which will run the backend of the employee manager using mysql
 const inquirer = require("inquirer");
 const fs = require("fs");
-const cTable = require("console.table");
-var mysql = require("mysql");
+const cTable = require('console.table');
+var mysql = require("mysql2");
 const util = require("util");
 
 //PLAN
@@ -12,15 +12,10 @@ const util = require("util");
 // Application allows users to delete departments, roles, and employees
 // Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
 
-// Place for logo to appear in backend as user opens file
-const logo = require("");
-const config = require("./package.json");
-console.log(logo(config).render());
-
 // Create connection to mysql
 const connection = mysql.createConnection({
   host: "localhost",
-  port: 3001,
+  port: 3306,
   user: "root",
   password: "password",
   database: "employeetracker",
@@ -261,3 +256,148 @@ function runSearch() {
 
         });
 }
+
+// "View all employees",
+function byEmployees() {
+
+    var results = connection.query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.d_name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;",
+
+
+        function (error, results) {
+            if (error) throw error
+            console.table(results)
+        })
+
+};
+
+// "View all employees by department",
+function byDepartment() {
+
+    var department = connection.query("SELECT employee.id, employee.first_name, employee.last_name, department.d_name FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department.id WHERE department.id;",
+
+
+        function (error, department) {
+            if (error) throw error
+            console.table(department)
+        })
+};
+
+// "View all employees by manager",
+function byManager() {
+
+    var manager = connection.query("SELECT employee.id, employee.first_name, employee.last_name, department.d_name, employee.manager_id AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id;",
+
+
+        function (error, manager) {
+            if (error) throw error
+            console.table(manager)
+        })
+};
+
+
+// "Update employee manager"
+function updateByManager(managerId, employeeId) {
+
+    var updateManager = connection.query(
+        "UPDATE employee SET manager_id = ? WHERE id = ?",
+        [managerId, employeeId],
+        function (error, updateManager) {
+            if (error) throw error
+            // console.table(manager)
+        })
+
+    byManager();
+
+}
+
+// "Add employee"
+function addEmployee(employeeFirst, employeeLast, department, manager) {
+
+    var add = connection.query(
+        "INSERT INTO employee SET first_name = ?, last_name = ?, role_id = ?, manager_id = ?",
+        [employeeFirst, employeeLast, department, manager],
+        function (error, add) {
+            if (error) throw error
+        })
+
+    byEmployees();
+}
+
+// Shows departments only, without employees
+function departmentTable() {
+    var depTable = connection.query("SELECT d_name FROM department;",
+
+
+        function (error, depTable) {
+            if (error) throw error
+            console.table(depTable)
+        })
+}
+
+// "Add Department"
+function addDepartment(department) {
+
+    var department = connection.query(
+        "INSERT INTO department SET d_name = ?",
+        [department],
+        function (error, department) {
+            if (error) throw error
+            // console.table(manager)
+        })
+
+    departmentTable();
+}
+
+// Shows roles only, without employees: 
+
+function roleTable() {
+    var roleT = connection.query("SELECT title, salary, department_id FROM role;",
+
+        function (error, roleT) {
+            if (error) throw error
+            console.table(roleT)
+        })
+}
+// "Add role"
+function addRole(title, salary, department_id) {
+
+    var newRole = connection.query(
+        "INSERT INTO role SET title = ?, salary = ?, department_id = ?",
+        [title, salary, department_id],
+        function (error, newRole) {
+            if (error) throw error
+            // console.table(manager)
+        })
+
+    roleTable();
+}
+
+
+// "Remove employee"
+function removeEmployee(id) {
+
+    var add = connection.query(
+        "DELETE FROM employee WHERE id = ?",
+        [id],
+        function (error, id) {
+            if (error) throw error
+        })
+
+    byEmployees();
+}
+
+// "Update employee role",
+function updateByRole(employeeId, roleId) {
+
+    var byRole = connection.query(
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+
+        [roleId, employeeId],
+        function (error, role) {
+            if (error) throw error
+
+        })
+    byDepartment();
+
+}
+
