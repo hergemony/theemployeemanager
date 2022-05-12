@@ -1,7 +1,7 @@
-# THE EMPLOYEE MANAGER #
+# THE EMPLOYEE MANAGER 👷‍♀️🧑‍🏭 #
 
 # Description
-This project emphasizes the use of using MySql with Inquirer, Node Js, console.table and several npm and json packages to render an application to track employee details.
+A command-line application is built from scratch to allow non-developers to easiy view and interact with information stored in a database. In this case, to access information stored about a company's employees. This project utilises an interface alled Content Management System (CMS) with the aid of MySQL, Inquirer, Node.js, console.table and several npm and json packages. 
 
 # Features
 This project has script features of:
