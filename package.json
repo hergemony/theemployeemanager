@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/hergemony/theemployeemanager/issues"
   },
-  "homepage": "https://github.com/hergemony/theemployeemanager#readme"
+  "homepage": "https://github.com/hergemony/theemployeemanager#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "node": "^17.7.2"
+  }
 }

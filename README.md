@@ -64,10 +64,10 @@ Package.JSON
     * Format: ![Validator-JS](N/A)
 
 ## Credits
-https://stackoverflow.com
-https://w3schools.com
-https://github.com/sam-ngu
-https://www.nathan-lam.com/blog/embed-video-in-github-readme.html
+- https://stackoverflow.com
+- https://w3schools.com
+- https://github.com/sam-ngu
+- https://www.nathan-lam.com/blog/embed-video-in-github-readme.html
 
 ## Questions
 Any questions please email hergemony@gmail.com
