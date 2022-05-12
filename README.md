@@ -32,8 +32,9 @@ Add departments, roles, employees
 View departments, roles, employees
 Update employee roles
 
-## Installation
-Git clone the repository into your terminal. The application should use mysql2 for running the unit tests and Inquirer from npm for collecting input from the user. The following command line when invoked will run the application: node server.js
+# Usage
+The application should use mysql2 for running the unit tests and Inquirer from npm for collecting input from the user. The following command line when invoked will run the application: node server.js
+
 To Execute File:
 Open in browser
 
@@ -71,9 +72,6 @@ Package.JSON
 
 ## Questions
 Any questions please email hergemony@gmail.com
-
-## Github Deployed Link
-https://hergemony.github.io/theemployeemanager/
 
 ## Copyright
 2022 Hergemony™️ Digital Services
